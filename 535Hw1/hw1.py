@@ -122,10 +122,40 @@ index = ['Male', 'Female']
 boxPlotDF = pd.DataFrame({'count': count}, index = index)
 boxPlot = boxPlotDF.plot.bar(rot = 0)
 
-#20
+#20 JK Version of 20
 #create a scatter plot comparing male and female tips
 fig = plt.figure()
 ax = fig.add_subplot(111)
 ax.scatter(males['tip'], males['total_bill'], 'o', c = 'r', label = 'male')
 ax.scatter(females['tip'], females['total_bill'], 's', c = 'b', label = 'female')
 plt.show()
+
+#20 AW Version of 20
+#drawing scatter plot of tips given by male compared to tips given by female
+#x = tips['total_bill']
+#y = tips['tip'].loc[2]
+
+
+#plt.scatter(x,y, color='b', marker='+', label='Female')
+#plt.scatter(x,y, color='r', marker='s', label='Male')
+#plt.legend(loc='upper left')
+#plt.show()
+
+#22
+#describe function on the day columns of tips
+dayDescribe = tips['day'].describe()
+print("\n\nQuestion 22\n", dayDescribe)
+
+#23
+#grouby to form groups based on days of the week and # of customers that were served daily
+dinnerDayGroup = tips.groupby(by='day')['party size'].count()
+print("\n\nQuestion 23\n", dinnerDayGroup)
+
+#24
+#line plot the results of #23
+tips.groupby(by='day')['party size'].count().plot(kind='line')
+plt.xticks([0.0,1.0,2.0,3.0],["Thursday",'Friday',"Saturday","Sunday"])
+plt.grid(True)
+plt.show()
+#not working properly yet (data seems off)
+
