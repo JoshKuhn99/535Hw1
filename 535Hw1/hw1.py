@@ -89,3 +89,18 @@ plt.show() #******works but don't know if this is the amount of detail he wants*
 
 #14
 #plotting tip outliers >=6
+
+
+
+#15
+#use group by func to find avg tip amount per sex.
+groupByTip = tips.groupby('sex')
+
+print("\n\nThe average tip left by each gender is as follows:\n",groupByTip['tip'].agg(np.mean))
+
+#16
+#creating a new dataframe from the males column and drawing a random sample of 10
+
+
+males = tips.loc[groupByTip.groups['Male']]
+print('\n\n', males)
