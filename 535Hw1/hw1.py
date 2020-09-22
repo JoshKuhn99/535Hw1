@@ -170,3 +170,27 @@ plt.xticks([0.0,1.0,2.0,3.0],["Thursday",'Friday',"Saturday","Sunday"])
 plt.grid(True)
 plt.show()
 #not working properly yet (data seems off)
+
+#25
+#find average number of customers per day
+tipsByDay = tips.groupby('day')['tip']
+#thurs = tipsByDay['Thur'].mean()
+fri = tipsByDay['Fri'].mean()
+sat = tipsByDay['Sat'].mean()
+sun = tipsByDay['Sun'].mean()
+print("average tip for Thursday: ", thurs, '\n')
+print("average tip for Friday: ", fri, '\n')
+print("average tip for Saturday: ", sat, '\n')
+print("average tip for Sunday: ", sun, '\n')
+
+#26
+#draw 4 subplots showing the tips given on each day
+axs = plt.subplots(2,2)
+axs[0, 0].plot(tipsByDay['Thur'],tips.groupby('day')['party size'].count())
+axs[0, 0].set_title('Thursday')
+axs[0, 1].plot(tipsByDay['Friday'],tips.groupby('day')['party size'].count())
+axs[0, 1].set_title('Friday')
+axs[1, 0].plot(tipsByDay['Saturday'],tips.groupby('day')['party size'].count())
+axs[1, 0].set_title('Saturday')
+axs[1, 1].plot(tipsByDay['Sunday'],tips.groupby('day')['party size'].count())
+axs[1, 1].set_title('Sunday')
