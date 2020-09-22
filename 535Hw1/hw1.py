@@ -89,18 +89,43 @@ plt.show() #******works but don't know if this is the amount of detail he wants*
 
 #14
 #plotting tip outliers >=6
-
-
+boolTip = np.where(tips['tip'] >= 6)
+print("tips >=6 at indexes: ", boolTip)
+print(boolTip[0])
 
 #15
 #use group by func to find avg tip amount per sex.
 groupByTip = tips.groupby('sex')
-
 print("\n\nThe average tip left by each gender is as follows:\n",groupByTip['tip'].agg(np.mean))
 
 #16
 #creating a new dataframe from the males column and drawing a random sample of 10
-
-
 males = tips.loc[groupByTip.groups['Male']]
 print('\n\n', males)
+
+#17 
+#create a df named females and call sample(frac = 0.1, replace=True)
+females = tips.loc[groupByTip.groups['Female']]
+print(females.sample(frac = 0.1, replace = True))
+
+#18 
+#find number of male and female customers
+maleCount = males['sex'].value_counts()
+femaleCount = females['sex'].value_counts()
+print("The number of male customers are: ", maleCount[0],"\n",
+      "and the number of female customers: \n", femaleCount[0])
+
+#19 
+#create a bar chart comparing males and females 
+count = [maleCount[0], femaleCount[0]]
+index = ['Male', 'Female']
+boxPlotDF = pd.DataFrame({'count': count}, index = index)
+boxPlot = boxPlotDF.plot.bar(rot = 0)
+
+#20
+#create a scatter plot comparing male and female tips
+fig = plt.figure()
+ax = fig.add_subplot(111)
+ax.scatter(males['tip'], males['total_bill'], 'o', c = 'r', label = 'male')
+ax.scatter(females['tip'], females['total_bill'], 's', c = 'b', label = 'female')
+plt.show()
