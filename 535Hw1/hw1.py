@@ -199,3 +199,23 @@ axs[1, 0].plot(tipsByDay['Saturday'],tips.groupby('day')['party size'].count())
 axs[1, 0].set_title('Saturday')
 axs[1, 1].plot(tipsByDay['Sunday'],tips.groupby('day')['party size'].count())
 axs[1, 1].set_title('Sunday')
+
+###############################################################################
+
+#26
+#draw 4 subplots showing the tips given on each day
+axs = plt.subplots(2,2)
+fig.suptitle('Tips Given on Different Days')
+xThursTip = thurs['tip'].tolist()
+yThursParty = thurs['party size'].tolist()
+axs[0, 0].plot(xThursTip,yThursParty)
+axs[0, 0].set_title('Thursday')
+
+#axs[0, 1].plot(x,y)#tipsByDay['Friday'],tips.groupby('day')['party size'].count())
+#axs[0, 1].set_title('Friday')
+#axs[1, 0].plot(x,y)#tipsByDay['Saturday'],tips.groupby('day')['party size'].count())
+#axs[1, 0].set_title('Saturday')
+#axs[1, 1].plot(x,y)#tipsByDay['Sunday'],tips.groupby('day')['party size'].count())
+#axs[1, 1].set_title('Sunday')
+
+##############################################################################
