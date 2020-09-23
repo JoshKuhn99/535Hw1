@@ -173,15 +173,20 @@ plt.show()
 
 #25
 #find average number of customers per day
-tipsByDay = tips.groupby('day')['tip']
-#thurs = tipsByDay['Thur'].mean()
-fri = tipsByDay['Fri'].mean()
-sat = tipsByDay['Sat'].mean()
-sun = tipsByDay['Sun'].mean()
-print("average tip for Thursday: ", thurs, '\n')
-print("average tip for Friday: ", fri, '\n')
-print("average tip for Saturday: ", sat, '\n')
-print("average tip for Sunday: ", sun, '\n')
+tipsByDay = tips.groupby('day')
+thurs = tipsByDay.get_group('Thur')
+thursAvg = thurs['tip'].agg(np.mean)
+print("\n\nQuestion 25:\nThe average tip left on Thursday:\n",thursAvg)
+fri = tipsByDay.get_group('Fri')
+friAvg = fri['tip'].agg(np.mean)
+print("\nThe average tip left on Friday:\n",friAvg)
+sat = tipsByDay.get_group('Sat')
+satAvg = sat['tip'].agg(np.mean)
+print("\nThe average tip left on Saturday:\n",satAvg)
+sun = tipsByDay.get_group('Sun')
+sunAvg = sun['tip'].agg(np.mean)
+print("\nThe average tip left on Sunday:\n", sunAvg)
+
 
 #26
 #draw 4 subplots showing the tips given on each day
