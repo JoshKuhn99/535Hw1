@@ -219,3 +219,14 @@ axs[0, 0].set_title('Thursday')
 #axs[1, 1].set_title('Sunday')
 
 ##############################################################################
+#27 
+#draw a pie chart to compare total tips given on each day 
+labels = 'Thurs', 'Fri', 'Sat', 'Sun'
+sizes = [np.sum(yThursTip), np.sum(yFriTip), np.sum(ySatTip), np.sum(ySunTip)]
+
+fig1, ax1 = plt.subplots()
+ax1.pie(sizes, labels=labels, autopct='%1.1f%%',
+        shadow=True, startangle=90)
+ax1.axis('equal')  # Equal aspect ratio ensures that pie is drawn as a circle.
+
+plt.show()
